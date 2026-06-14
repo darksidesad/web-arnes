@@ -49,14 +49,14 @@ const agents = [
   <div class="flex flex-col items-center w-full">
     <Hero />
 
-  {/* Los 5 Agentes Section */}
-  <section id="agentes" class="py-24 relative">
-    <div class="max-w-6xl mx-auto px-6 md:px-12">
+  <!-- Los 5 Agentes Section -->
+    <section id="agentes" class="py-24 relative">
+      <div class="max-w-6xl mx-auto px-6 md:px-16 w-full">
       <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/agents</p>
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">Los 5 Agentes</h2>
       <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">Cada agente tiene una responsabilidad específica y genera solo los archivos que le corresponden.</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
         {agents.map((agent) => (
           <AgentCard {...agent} />
         ))}

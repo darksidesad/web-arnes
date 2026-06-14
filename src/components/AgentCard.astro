@@ -11,7 +11,7 @@ const { name, icon, responsibility, files, noGen } = Astro.props;
 ---
 
 <div
-  class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-6 transition-all duration-300 flex flex-col flex-1"
+  class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-6 transition-all duration-300 flex flex-col flex-1 h-full"
   style="&:hover { box-shadow: 0 0 20px #6C63FF40; }"
   onmouseover="this.style.boxShadow='0 0 20px #6C63FF40'; this.style.borderColor='var(--color-accent)'"
   onmouseout="this.style.boxShadow='none'; this.style.borderColor='var(--color-border)'"
@@ -22,9 +22,9 @@ const { name, icon, responsibility, files, noGen } = Astro.props;
   </div>
   <p class="text-[var(--color-muted)] mb-4 leading-relaxed">{responsibility}</p>
   <div class="mb-4">
-    <span class="inline-flex w-fit px-3 py-1 rounded-full text-xs font-medium" style="background-color: #FF4444; color: white;">⛔ NO genera: {noGen}</span>
+    <span style="display: inline-flex; width: fit-content; max-width: 100%; white-space: normal; background-color: #FF4444; color: white; padding: 4px 12px; border-radius: 9999px; font-size: 11px;">⛔ NO genera: {noGen}</span>
   </div>
-  <div class="mt-4">
+  <div class="mt-auto pt-4">
     <p class="text-xs font-medium text-[var(--color-muted)] uppercase tracking-wider mb-2">Archivos generados:</p>
     <ul class="space-y-1">
       {files.map((file) => (
