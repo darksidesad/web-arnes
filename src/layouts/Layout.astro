@@ -41,7 +41,9 @@ import '../styles/global.css';
       </div>
     </nav>
 
-    <slot />
+    <main class="flex flex-col items-center w-full">
+      <slot />
+    </main>
 
     <footer class="bg-[var(--color-surface)] border-t border-[var(--color-border)] py-12 mt-24">
       <div class="max-w-6xl mx-auto px-6 text-center">
