@@ -1,0 +1,256 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import AgentCard from '../components/AgentCard.astro';
+import BootstrapViewer from '../components/BootstrapViewer.astro';
+import LoopDiagram from '../components/LoopDiagram.astro';
+import ConversationExample from '../components/ConversationExample.astro';
+
+const agents = [
+  {
+    name: 'Product Owner',
+    icon: '📋',
+    responsibility: 'Define QUÉ se construye y por qué. Genera el PRD, Definition of Done y reglas de orquestación.',
+    files: ['docs/PRD.md', 'docs/DOD.md', 'AGENTS.md'],
+    noGen: 'código fuente, Dockerfiles, tests, arquitectura técnica'
+  },
+  {
+    name: 'Architect',
+    icon: '🏗️',
+    responsibility: 'Define CÓMO se construye. Diseña la arquitectura y configura los agentes de opencode.',
+    files: ['docs/architecture.md', '.opencode/agents/orchestrator.md', '.opencode/agents/developer.md', '.opencode/agents/qa.md', '.opencode/agents/devops.md', '.opencode/skills/*/SKILL.md'],
+    noGen: 'código fuente, tests, configuración de infraestructura'
+  },
+  {
+    name: 'Developer',
+    icon: '💻',
+    responsibility: 'Implementa el código funcional con type hints, async/await, docstrings y manejo explícito de errores.',
+    files: ['src/**/*.py', 'requirements.txt', '.env.example'],
+    noGen: 'Dockerfiles, docker-compose, scripts de deploy, tests'
+  },
+  {
+    name: 'DevOps',
+    icon: '🔧',
+    responsibility: 'Configura infraestructura y entornos. Docker, scripts y archivos de configuración.',
+    files: ['.gitignore', 'Dockerfile', 'docker-compose.yml', 'scripts/start.sh', 'scripts/migrate.sh', 'scripts/test.sh'],
+    noGen: 'código fuente, tests, documentación de negocio'
+  },
+  {
+    name: 'QA',
+    icon: '🧪',
+    responsibility: 'Valida que todo funciona. Genera tests unitarios, de integración y end-to-end.',
+    files: ['tests/unit/**', 'tests/integration/**', 'tests/e2e/**', 'docs/critique_vN.md'],
+    noGen: 'código fuente de la aplicación, Dockerfiles'
+  }
+];
+---
+
+<Layout title="Harness Engineering - Sistema de Agentes de IA">
+  <Hero />
+
+  {/* Los 5 Agentes Section */}
+  <section id="agentes" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="section-heading text-center">Los 5 Agentes</h2>
+      <p class="section-subheading text-center">Cada agente tiene una responsabilidad específica y genera solo los archivos que le corresponden.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {agents.map((agent) => (
+          <AgentCard {...agent} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* El Bootstrap Section */}
+  <section id="bootstrap" class="py-24 bg-[var(--color-surface)]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="section-heading text-center">El Bootstrap</h2>
+      <p class="section-subheading text-center">El prompt completo que inicia el flujo de agentes. Copia y ejecuta para cada proyecto.</p>
+
+      <BootstrapViewer />
+    </div>
+  </section>
+
+  {/* Loop de Crítica Section */}
+  <section id="loop" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="section-heading text-center">Loop de Crítica</h2>
+      <p class="section-subheading text-center">Cuando el QA encuentra errores, se activa un ciclo de corrección automático.</p>
+
+      <LoopDiagram />
+    </div>
+  </section>
+
+  {/* Ejemplo de Conversación Section */}
+  <section id="ejemplo" class="py-24 bg-[var(--color-surface)]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="section-heading text-center">Ejemplo de Conversación</h2>
+      <p class="section-subheading text-center">Así se ve un flujo completo de Harness Engineering en acción.</p>
+
+      <ConversationExample />
+    </div>
+  </section>
+
+  {/* Cómo Empezar Section */}
+  <section id="empezar" class="py-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="section-heading text-center">Cómo Empezar</h2>
+      <p class="section-subheading text-center">Tres pasos para usar Harness Engineering en tu próximo proyecto.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {/* Step 1 */}
+        <div class="card text-center">
+          <div class="w-12 h-12 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mx-auto mb-4">
+            <span class="text-[var(--color-accent)] font-bold text-xl font-['Space_Grotesk']">1</span>
+          </div>
+          <h3 class="text-lg font-bold text-[var(--color-text)] mb-2 font-['Space_Grotesk']">Copia el Bootstrap</h3>
+          <p class="text-sm text-[var(--color-muted)]">Copia el contenido del Bootstrap que encontraste en la sección anterior.</p>
+        </div>
+
+        {/* Step 2 */}
+        <div class="card text-center">
+          <div class="w-12 h-12 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mx-auto mb-4">
+            <span class="text-[var(--color-accent)] font-bold text-xl font-['Space_Grotesk']">2</span>
+          </div>
+          <h3 class="text-lg font-bold text-[var(--color-text)] mb-2 font-['Space_Grotesk']">Pégalo en tu chat</h3>
+          <p class="text-sm text-[var(--color-muted)]">Inicia una nueva conversación con tu modelo de IA y pega el Bootstrap.</p>
+        </div>
+
+        {/* Step 3 */}
+        <div class="card text-center">
+          <div class="w-12 h-12 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mx-auto mb-4">
+            <span class="text-[var(--color-accent)] font-bold text-xl font-['Space_Grotesk']">3</span>
+          </div>
+          <h3 class="text-lg font-bold text-[var(--color-text)] mb-2 font-['Space_Grotesk']">Describe tu proyecto</h3>
+          <p class="text-sm text-[var(--color-muted)]">El agente te hará preguntas y luego ejecutará el flujo completo.</p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button
+          id="copy-bootstrap"
+          class="btn-primary"
+        >
+          Copiar Bootstrap Completo
+        </button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const bootstrapContent = `BOOTSTRAP PROMPT - Harness Engineering v2.0
+
+Cuando recibas un nuevo proyecto, ejecuta el siguiente flujo en orden estricto.
+No avances al siguiente paso sin completar el anterior.
+
+
+PASO 0: Validación del Brief
+
+Antes de ejecutar cualquier agente, responde estas 4 preguntas al usuario:
+
+- ¿Qué problema resuelve este proyecto en una oración?
+- ¿Cuáles son los 3 riesgos técnicos principales?
+- ¿Qué está explícitamente fuera del scope?
+- ¿Cuál es el criterio mínimo para considerar el proyecto "entregable"?
+
+Regla: Si el usuario no confirma o corrige, NO avances al PASO 1.
+Formato de confirmación esperado: "Confirmo" o correcciones específicas.
+
+
+PASO 1: Product Owner Agent
+
+Responsabilidad: Definir QUÉ se construye y por qué.
+
+Genera estos archivos:
+  docs/PRD.md
+  docs/DOD.md
+  AGENTS.md
+
+⛔ NO genera: código fuente, Dockerfiles, tests, arquitectura técnica.
+
+
+PASO 2: Architect Agent
+
+Responsabilidad: Definir CÓMO se construye.
+
+Genera estos archivos:
+  docs/architecture.md
+  .opencode/agents/orchestrator.md
+  .opencode/agents/developer.md
+  .opencode/agents/qa.md
+  .opencode/agents/devops.md
+  .opencode/skills/*/SKILL.md
+
+⛔ NO genera: código fuente, tests, configuración de infraestructura.
+
+
+PASO 3: Developer Agent
+
+Responsabilidad: Implementar el código funcional.
+
+Reglas:
+  - Type hints en todas las funciones
+  - async/await para toda operación de I/O
+  - Docstrings en clases y funciones públicas
+  - Manejo explícito de errores
+  - Cero placeholders
+
+⛔ NO genera: Dockerfiles, docker-compose, scripts de deploy, tests.
+
+
+PASO 4: DevOps Agent
+
+Responsabilidad: Configurar infraestructura y entornos.
+
+Genera:
+  - .gitignore completo
+  - Dockerfile optimizado
+  - docker-compose.yml con healthchecks
+  - scripts/start.sh, scripts/migrate.sh, scripts/test.sh
+
+⛔ NO genera: código fuente, tests, documentación de negocio.
+
+
+PASO 5: QA Agent
+
+Responsabilidad: Validar que todo funciona.
+
+Protocolo:
+  Fase 5.0 — Preguntas de contexto (máximo 5 preguntas)
+  Genera tests en tests/unit/, tests/integration/, tests/e2e/
+  Ejecuta pytest --tb=short -q
+  Si hay fallos → genera docs/critique_vN.md
+  Criterio de salida: 0 errores en pytest
+
+⛔ NO genera: código fuente de la aplicación, Dockerfiles.
+
+
+LOOP DE CRÍTICA
+
+Se activa cuando el PASO 5 encuentra errores.
+
+Paso A — Revisar todos los archivos
+Paso B — Documentar en docs/critique_vN.md
+Paso C — Corregir cada problema
+Paso D — Validar con pytest
+Paso E — Si 3 iteraciones sin éxito → escalar al usuario
+
+Máximo 3 iteraciones antes de escalar.`;
+
+  document.getElementById('copy-bootstrap')?.addEventListener('click', () => {
+    navigator.clipboard.writeText(bootstrapContent).then(() => {
+      const btn = document.getElementById('copy-bootstrap');
+      if (btn) {
+        const originalText = btn.textContent;
+        btn.textContent = 'Copiado!';
+        btn.classList.add('bg-[var(--color-accent-2)]');
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.remove('bg-[var(--color-accent-2)]');
+        }, 2000);
+      }
+    });
+  });
+</script>

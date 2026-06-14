@@ -1,0 +1,151 @@
+---
+---
+
+<section id="hero" class="py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-[var(--color-text)] leading-tight">
+      Construye proyectos completos<br />
+      con <span class="text-[var(--color-accent)]">agentes de IA</span>
+    </h1>
+    <p class="text-lg md:text-xl text-[var(--color-muted)] max-w-3xl mx-auto mb-10 leading-relaxed">
+      Harness Engineering es un sistema de 5 agentes especializados que trabajan en secuencia para generar código funcional, tests que pasan y documentación real — no pseudocódigo.
+    </p>
+    <a href="#bootstrap" class="btn-primary text-lg">
+      Ver el Bootstrap
+    </a>
+
+    <!-- Agent Pipeline SVG Diagram -->
+    <div class="mt-16 overflow-x-auto">
+      <svg viewBox="0 0 1000 180" class="w-full max-w-4xl mx-auto" xmlns="http://www.w3.org/2000/svg">
+        <!-- Connection Lines -->
+        <path
+          d="M 170 90 L 330 90"
+          stroke="var(--color-accent)"
+          stroke-width="2"
+          stroke-dasharray="200"
+          stroke-dashoffset="200"
+          marker-end="url(#arrowhead)"
+          class="animate-draw"
+          style="animation-delay: 0.3s"
+        />
+        <path
+          d="M 470 90 L 530 90"
+          stroke="var(--color-accent)"
+          stroke-width="2"
+          stroke-dasharray="200"
+          stroke-dashoffset="200"
+          marker-end="url(#arrowhead)"
+          class="animate-draw"
+          style="animation-delay: 0.6s"
+        />
+        <path
+          d="M 670 90 L 730 90"
+          stroke="var(--color-accent)"
+          stroke-width="2"
+          stroke-dasharray="200"
+          stroke-dashoffset="200"
+          marker-end="url(#arrowhead)"
+          class="animate-draw"
+          style="animation-delay: 0.9s"
+        />
+        <path
+          d="M 870 90 L 930 90"
+          stroke="var(--color-accent)"
+          stroke-width="2"
+          stroke-dasharray="200"
+          stroke-dashoffset="200"
+          marker-end="url(#arrowhead)"
+          class="animate-draw"
+          style="animation-delay: 1.2s"
+        />
+
+        <!-- Arrow markers -->
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-accent)" />
+          </marker>
+        </defs>
+
+        <!-- Agent 1: Product Owner -->
+        <g class="animate-fade-in" style="animation-delay: 0.2s">
+          <rect
+            x="30"
+            y="50"
+            width="140"
+            height="80"
+            rx="12"
+            fill="var(--color-surface)"
+            stroke="var(--color-border)"
+            stroke-width="1.5"
+          />
+          <text x="100" y="80" text-anchor="middle" fill="var(--color-accent)" font-size="11" font-weight="600" font-family="Space Grotesk">Product Owner</text>
+          <text x="100" y="100" text-anchor="middle" fill="var(--color-muted)" font-size="10" font-family="Inter">Define QUÉ</text>
+        </g>
+
+        <!-- Agent 2: Architect -->
+        <g class="animate-fade-in" style="animation-delay: 0.5s">
+          <rect
+            x="230"
+            y="50"
+            width="140"
+            height="80"
+            rx="12"
+            fill="var(--color-surface)"
+            stroke="var(--color-border)"
+            stroke-width="1.5"
+          />
+          <text x="300" y="80" text-anchor="middle" fill="var(--color-accent)" font-size="11" font-weight="600" font-family="Space Grotesk">Architect</text>
+          <text x="300" y="100" text-anchor="middle" fill="var(--color-muted)" font-size="10" font-family="Inter">Define CÓMO</text>
+        </g>
+
+        <!-- Agent 3: Developer -->
+        <g class="animate-fade-in" style="animation-delay: 0.8s">
+          <rect
+            x="430"
+            y="50"
+            width="140"
+            height="80"
+            rx="12"
+            fill="var(--color-surface)"
+            stroke="var(--color-border)"
+            stroke-width="1.5"
+          />
+          <text x="500" y="80" text-anchor="middle" fill="var(--color-accent)" font-size="11" font-weight="600" font-family="Space Grotesk">Developer</text>
+          <text x="500" y="100" text-anchor="middle" fill="var(--color-muted)" font-size="10" font-family="Inter">Implementa</text>
+        </g>
+
+        <!-- Agent 4: DevOps -->
+        <g class="animate-fade-in" style="animation-delay: 1.1s">
+          <rect
+            x="630"
+            y="50"
+            width="140"
+            height="80"
+            rx="12"
+            fill="var(--color-surface)"
+            stroke="var(--color-border)"
+            stroke-width="1.5"
+          />
+          <text x="700" y="80" text-anchor="middle" fill="var(--color-accent)" font-size="11" font-weight="600" font-family="Space Grotesk">DevOps</text>
+          <text x="700" y="100" text-anchor="middle" fill="var(--color-muted)" font-size="10" font-family="Inter">Infraestructura</text>
+        </g>
+
+        <!-- Agent 5: QA -->
+        <g class="animate-fade-in" style="animation-delay: 1.4s">
+          <rect
+            x="830"
+            y="50"
+            width="140"
+            height="80"
+            rx="12"
+            fill="var(--color-surface)"
+            stroke="var(--color-accent-2)"
+            stroke-width="1.5"
+          />
+          <text x="900" y="80" text-anchor="middle" fill="var(--color-accent-2)" font-size="11" font-weight="600" font-family="Space Grotesk">QA</text>
+          <text x="900" y="100" text-anchor="middle" fill="var(--color-muted)" font-size="10" font-family="Inter">Valida</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>

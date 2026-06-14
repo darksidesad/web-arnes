@@ -1,0 +1,33 @@
+---
+interface Props {
+  name: string;
+  icon: string;
+  responsibility: string;
+  files: string[];
+  noGen: string;
+}
+
+const { name, icon, responsibility, files, noGen } = Astro.props;
+---
+
+<div class="card">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="text-2xl">{icon}</span>
+    <h3 class="text-xl font-bold text-[var(--color-text)] font-['Space_Grotesk']">{name}</h3>
+  </div>
+  <p class="text-[var(--color-muted)] mb-4 leading-relaxed">{responsibility}</p>
+  <div class="mb-4">
+    <span class="badge badge-amber">⛔ NO genera: {noGen}</span>
+  </div>
+  <div class="mt-4">
+    <p class="text-xs font-medium text-[var(--color-muted)] uppercase tracking-wider mb-2">Archivos generados:</p>
+    <ul class="space-y-1">
+      {files.map((file) => (
+        <li class="text-sm text-[var(--color-text)] font-['JetBrains_Mono'] flex items-center gap-2">
+          <span class="text-[var(--color-accent)]">•</span>
+          {file}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

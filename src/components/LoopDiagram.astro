@@ -1,0 +1,96 @@
+---
+const steps = [
+  { label: 'Revisar', description: 'Archivos', color: 'accent' },
+  { label: 'Documentar', description: 'critique_vN.md', color: 'accent' },
+  { label: 'Corregir', description: 'Problemas', color: 'accent' },
+  { label: 'Validar', description: 'pytest', color: 'accent' },
+];
+---
+
+<div class="py-8">
+  <!-- Loop Diagram -->
+  <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0 max-w-4xl mx-auto">
+    {steps.map((step, i) => (
+      <div class="flex items-center">
+        <!-- Step Box -->
+        <div class="flex flex-col items-center">
+          <div class="card w-32 h-32 flex flex-col items-center justify-center text-center">
+            <span class="text-[var(--color-accent)] text-2xl mb-2">{'0' + (i + 1)}</span>
+            <span class="text-[var(--color-text)] font-bold text-sm font-['Space_Grotesk']">{step.label}</span>
+            <span class="text-[var(--color-muted)] text-xs mt-1">{step.description}</span>
+          </div>
+        </div>
+
+        {/* Arrow between steps */}
+        {i < steps.length - 1 && (
+          <div class="hidden md:block mx-2">
+            <svg width="40" height="20" viewBox="0 0 40 20" class="text-[var(--color-accent)]">
+              <path d="M 0 10 L 30 10" stroke="currentColor" stroke-width="2" fill="none" />
+              <polygon points="30,5 40,10 30,15" fill="currentColor" />
+            </svg>
+          </div>
+        )}
+        {i < steps.length - 1 && (
+          <div class="md:hidden">
+            <svg width="20" height="40" viewBox="0 0 20 40" class="text-[var(--color-accent)]">
+              <path d="M 10 0 L 10 30" stroke="currentColor" stroke-width="2" fill="none" />
+              <polygon points="5,30 10,40 15,30" fill="currentColor" />
+            </svg>
+          </div>
+        )}
+      </div>
+    ))}
+
+    {/* Arrow to decision */}
+    <div class="flex items-center">
+      <div class="hidden md:block mx-2">
+        <svg width="40" height="20" viewBox="0 0 40 20" class="text-[var(--color-accent)]">
+          <path d="M 0 10 L 30 10" stroke="currentColor" stroke-width="2" fill="none" />
+          <polygon points="30,5 40,10 30,15" fill="currentColor" />
+        </svg>
+      </div>
+      <div class="md:hidden">
+        <svg width="20" height="40" viewBox="0 0 20 40" class="text-[var(--color-accent)]">
+          <path d="M 10 0 L 10 30" stroke="currentColor" stroke-width="2" fill="none" />
+          <polygon points="5,30 10,40 15,30" fill="currentColor" />
+        </svg>
+      </div>
+
+      {/* Decision Diamond */}
+      <div class="relative">
+        <div class="w-32 h-32 transform rotate-45 border-2 border-[var(--color-accent)] bg-[var(--color-surface)] flex items-center justify-center">
+          <span class="transform -rotate-45 text-[var(--color-text)] font-bold text-sm font-['Space_Grotesk']">¿Pasa?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Decision Branches */}
+  <div class="flex flex-col md:flex-row items-center justify-center gap-16 mt-8 max-w-4xl mx-auto">
+    {/* Fail Branch - Repetir */}
+    <div class="flex flex-col items-center">
+      <div class="text-[var(--color-accent)] text-sm mb-2 font-medium">No (Repetir)</div>
+      <svg width="20" height="40" viewBox="0 0 20 40" class="text-[var(--color-accent)] md:rotate-0 rotate-180">
+        <path d="M 10 30 L 10 0" stroke="currentColor" stroke-width="2" fill="none" />
+        <polygon points="5,0 10,-10 15,0" fill="currentColor" />
+      </svg>
+      <div class="card px-6 py-3 mt-2 border-[var(--color-accent)]">
+        <span class="text-[var(--color-accent)] font-bold font-['Space_Grotesk']">Repetir</span>
+        <p class="text-[var(--color-muted)] text-xs mt-1">Máx. 3 iteraciones</p>
+      </div>
+    </div>
+
+    {/* Success Branch - Entregar */}
+    <div class="flex flex-col items-center">
+      <div class="text-[var(--color-accent-2)] text-sm mb-2 font-medium">Sí (Entregar)</div>
+      <svg width="20" height="40" viewBox="0 0 20 40" class="text-[var(--color-accent-2)] md:rotate-0 rotate-180">
+        <path d="M 10 30 L 10 0" stroke="currentColor" stroke-width="2" fill="none" />
+        <polygon points="5,0 10,-10 15,0" fill="currentColor" />
+      </svg>
+      <div class="card px-6 py-3 mt-2 border-[var(--color-accent-2)]">
+        <span class="text-[var(--color-accent-2)] font-bold font-['Space_Grotesk']">Entregar</span>
+        <p class="text-[var(--color-muted)] text-xs mt-1">Proyecto listo</p>
+      </div>
+    </div>
+  </div>
+</div>

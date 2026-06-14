@@ -1,0 +1,50 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'Harness Engineering' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Harness Engineering - Sistema de agentes de IA para construir proyectos completos" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[var(--color-bg)] text-[var(--color-text)]">
+    <nav class="sticky top-0 z-50 bg-[var(--color-bg)]/95 backdrop-blur-sm border-b border-[var(--color-border)]">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="text-xl font-bold text-[var(--color-accent)] font-['Space_Grotesk']">
+          Harness Engineering
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#agentes" class="nav-link text-[var(--color-muted)] text-sm">Agentes</a>
+          <a href="#bootstrap" class="nav-link text-[var(--color-muted)] text-sm">Bootstrap</a>
+          <a href="#loop" class="nav-link text-[var(--color-muted)] text-sm">Loop</a>
+          <a href="#ejemplo" class="nav-link text-[var(--color-muted)] text-sm">Ejemplo</a>
+          <a href="#empezar" class="nav-link text-[var(--color-muted)] text-sm">Empezar</a>
+        </div>
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer class="border-t border-[var(--color-border)] py-8 mt-24">
+      <div class="max-w-6xl mx-auto px-6 text-center text-[var(--color-muted)] text-sm">
+        <p>&copy; 2024 Harness Engineering. Sistema de agentes de IA para desarrollo de software.</p>
+      </div>
+    </footer>
+  </body>
+</html>

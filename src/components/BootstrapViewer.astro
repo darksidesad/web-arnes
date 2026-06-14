@@ -1,0 +1,179 @@
+---
+const tabs = ['PASO 0', 'PASO 1', 'PASO 2', 'PASO 3', 'PASO 4', 'PASO 5', 'LOOP'];
+
+const sections: Record<string, string> = {
+  'PASO 0': `PASO 0: Validación del Brief
+
+Antes de ejecutar cualquier agente, responde estas 4 preguntas al usuario:
+
+- ¿Qué problema resuelve este proyecto en una oración?
+- ¿Cuáles son los 3 riesgos técnicos principales?
+- ¿Qué está explícitamente fuera del scope?
+- ¿Cuál es el criterio mínimo para considerar el proyecto "entregable"?
+
+Regla: Si el usuario no confirma o corrige, NO avances al PASO 1.
+Formato de confirmación esperado: "Confirmo" o correcciones específicas.`,
+
+  'PASO 1': `PASO 1: Product Owner Agent
+
+Responsabilidad: Definir QUÉ se construye y por qué.
+
+Genera estos archivos:
+  docs/PRD.md
+  docs/DOD.md
+  AGENTS.md
+
+⛔ NO genera: código fuente, Dockerfiles, tests, arquitectura técnica.`,
+
+  'PASO 2': `PASO 2: Architect Agent
+
+Responsabilidad: Definir CÓMO se construye.
+
+Genera estos archivos:
+  docs/architecture.md
+  .opencode/agents/orchestrator.md
+  .opencode/agents/developer.md
+  .opencode/agents/qa.md
+  .opencode/agents/devops.md
+  .opencode/skills/*/SKILL.md
+
+⛔ NO genera: código fuente, tests, configuración de infraestructura.`,
+
+  'PASO 3': `PASO 3: Developer Agent
+
+Responsabilidad: Implementar el código funcional.
+
+Reglas:
+  - Type hints en todas las funciones
+  - async/await para toda operación de I/O
+  - Docstrings en clases y funciones públicas
+  - Manejo explícito de errores
+  - Cero placeholders
+
+⛔ NO genera: Dockerfiles, docker-compose, scripts de deploy, tests.`,
+
+  'PASO 4': `PASO 4: DevOps Agent
+
+Responsabilidad: Configurar infraestructura y entornos.
+
+Genera:
+  - .gitignore completo
+  - Dockerfile optimizado
+  - docker-compose.yml con healthchecks
+  - scripts/start.sh, scripts/migrate.sh, scripts/test.sh
+
+⛔ NO genera: código fuente, tests, documentación de negocio.`,
+
+  'PASO 5': `PASO 5: QA Agent
+
+Responsabilidad: Validar que todo funciona.
+
+Protocolo:
+  Fase 5.0 — Preguntas de contexto (máximo 5 preguntas)
+  Genera tests en tests/unit/, tests/integration/, tests/e2e/
+  Ejecuta pytest --tb=short -q
+  Si hay fallos → genera docs/critique_vN.md
+  Criterio de salida: 0 errores en pytest
+
+⛔ NO genera: código fuente de la aplicación, Dockerfiles.`,
+
+  'LOOP': `LOOP DE CRÍTICA
+
+Se activa cuando el PASO 5 encuentra errores.
+
+Paso A — Revisar todos los archivos
+Paso B — Documentar en docs/critique_vN.md
+Paso C — Corregir cada problema
+Paso D — Validar con pytest
+Paso E — Si 3 iteraciones sin éxito → escalar al usuario
+
+Máximo 3 iteraciones antes de escalar.`
+};
+---
+
+<div class="relative">
+  <!-- Tabs -->
+  <div class="flex flex-wrap gap-2 mb-4 border-b border-[var(--color-border)] pb-4">
+    {tabs.map((tab, i) => (
+      <button
+        class={`tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+          i === 0
+            ? 'bg-[var(--color-accent)] text-white'
+            : 'bg-[var(--color-surface)] text-[var(--color-muted)] hover:text-[var(--color-text)] border border-[var(--color-border)]'
+        }`}
+        data-tab={tab}
+      >
+        {tab}
+      </button>
+    ))}
+  </div>
+
+  <!-- Code Content -->
+  <div class="relative">
+    {tabs.map((tab, i) => (
+      <div
+        class={`tab-content ${i === 0 ? 'block' : 'hidden'}`}
+        data-tab-content={tab}
+      >
+        <div class="code-block relative">
+          <button
+            class="copy-btn absolute top-3 right-3 px-3 py-1 text-xs bg-[var(--color-surface)] text-[var(--color-muted)] rounded border border-[var(--color-border)] hover:text-[var(--color-text)] hover:border-[var(--color-accent)] transition-all"
+            data-copy={sections[tab]}
+          >
+            Copiar
+          </button>
+          <pre class="whitespace-pre-wrap text-sm leading-relaxed"><code>{sections[tab]}</code></pre>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const copyBtns = document.querySelectorAll('.copy-btn');
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.getAttribute('data-tab');
+
+        tabBtns.forEach((b) => {
+          b.classList.remove('bg-[var(--color-accent)]', 'text-white');
+          b.classList.add('bg-[var(--color-surface)]', 'text-[var(--color-muted)]', 'border', 'border-[var(--color-border)]');
+        });
+
+        btn.classList.add('bg-[var(--color-accent)]', 'text-white');
+        btn.classList.remove('bg-[var(--color-surface)]', 'text-[var(--color-muted)]', 'border', 'border-[var(--color-border)]');
+
+        tabContents.forEach((content) => {
+          if (content.getAttribute('data-tab-content') === tabId) {
+            content.classList.remove('hidden');
+            content.classList.add('block');
+          } else {
+            content.classList.add('hidden');
+            content.classList.remove('block');
+          }
+        });
+      });
+    });
+
+    copyBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const text = btn.getAttribute('data-copy');
+        if (text) {
+          navigator.clipboard.writeText(text).then(() => {
+            const originalText = btn.textContent;
+            btn.textContent = 'Copiado!';
+            btn.classList.add('text-[var(--color-accent-2)]');
+            setTimeout(() => {
+              btn.textContent = originalText;
+              btn.classList.remove('text-[var(--color-accent-2)]');
+            }, 2000);
+          });
+        }
+      });
+    });
+  });
+</script>
