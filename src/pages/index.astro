@@ -49,10 +49,11 @@ const agents = [
   <Hero />
 
   {/* Los 5 Agentes Section */}
-  <section id="agentes" class="py-24">
+  <section id="agentes" class="py-24 relative">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="section-heading text-center">Los 5 Agentes</h2>
-      <p class="section-subheading text-center">Cada agente tiene una responsabilidad específica y genera solo los archivos que le corresponden.</p>
+      <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/agents</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">Los 5 Agentes</h2>
+      <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">Cada agente tiene una responsabilidad específica y genera solo los archivos que le corresponden.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {agents.map((agent) => (
@@ -62,41 +63,57 @@ const agents = [
     </div>
   </section>
 
+  {/* Gradient Separator */}
+  <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, var(--color-accent), transparent)"></div>
+
   {/* El Bootstrap Section */}
   <section id="bootstrap" class="py-24 bg-[var(--color-surface)]">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="section-heading text-center">El Bootstrap</h2>
-      <p class="section-subheading text-center">El prompt completo que inicia el flujo de agentes. Copia y ejecuta para cada proyecto.</p>
+      <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/bootstrap</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">El Bootstrap</h2>
+      <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">El prompt completo que inicia el flujo de agentes. Copia y ejecuta para cada proyecto.</p>
 
       <BootstrapViewer />
     </div>
   </section>
 
+  {/* Gradient Separator */}
+  <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, var(--color-accent), transparent)"></div>
+
   {/* Loop de Crítica Section */}
   <section id="loop" class="py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="section-heading text-center">Loop de Crítica</h2>
-      <p class="section-subheading text-center">Cuando el QA encuentra errores, se activa un ciclo de corrección automático.</p>
+      <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/loop</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">Loop de Crítica</h2>
+      <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">Cuando el QA encuentra errores, se activa un ciclo de corrección automático.</p>
 
       <LoopDiagram />
     </div>
   </section>
 
+  {/* Gradient Separator */}
+  <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, var(--color-accent), transparent)"></div>
+
   {/* Ejemplo de Conversación Section */}
   <section id="ejemplo" class="py-24 bg-[var(--color-surface)]">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="section-heading text-center">Ejemplo de Conversación</h2>
-      <p class="section-subheading text-center">Así se ve un flujo completo de Harness Engineering en acción.</p>
+      <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/ejemplo</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">Ejemplo de Conversación</h2>
+      <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">Así se ve un flujo completo de Harness Engineering en acción.</p>
 
       <ConversationExample />
     </div>
   </section>
 
+  {/* Gradient Separator */}
+  <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, var(--color-accent), transparent)"></div>
+
   {/* Cómo Empezar Section */}
   <section id="empezar" class="py-24">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="section-heading text-center">Cómo Empezar</h2>
-      <p class="section-subheading text-center">Tres pasos para usar Harness Engineering en tu próximo proyecto.</p>
+      <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/start</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">Cómo Empezar</h2>
+      <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">Tres pasos para usar Harness Engineering en tu próximo proyecto.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         {/* Step 1 */}

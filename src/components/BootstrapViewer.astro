@@ -93,13 +93,13 @@ Máximo 3 iteraciones antes de escalar.`
 
 <div class="relative">
   <!-- Tabs -->
-  <div class="flex flex-wrap gap-2 mb-4 border-b border-[var(--color-border)] pb-4">
+  <div class="flex flex-wrap gap-0 mb-4 border-b border-[var(--color-border)]">
     {tabs.map((tab, i) => (
       <button
-        class={`tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+        class={`tab-btn px-5 py-3 text-sm font-medium transition-all font-['JetBrains_Mono'] ${
           i === 0
-            ? 'bg-[var(--color-accent)] text-white'
-            : 'bg-[var(--color-surface)] text-[var(--color-muted)] hover:text-[var(--color-text)] border border-[var(--color-border)]'
+            ? 'text-[var(--color-accent)] border-b-2 border-[var(--color-accent)]'
+            : 'text-[var(--color-muted)] hover:text-[var(--color-text)] border-b-2 border-transparent'
         }`}
         data-tab={tab}
       >
@@ -140,12 +140,12 @@ Máximo 3 iteraciones antes de escalar.`
         const tabId = btn.getAttribute('data-tab');
 
         tabBtns.forEach((b) => {
-          b.classList.remove('bg-[var(--color-accent)]', 'text-white');
-          b.classList.add('bg-[var(--color-surface)]', 'text-[var(--color-muted)]', 'border', 'border-[var(--color-border)]');
+          b.classList.remove('text-[var(--color-accent)]', 'border-[var(--color-accent)]');
+          b.classList.add('text-[var(--color-muted)]', 'border-transparent');
         });
 
-        btn.classList.add('bg-[var(--color-accent)]', 'text-white');
-        btn.classList.remove('bg-[var(--color-surface)]', 'text-[var(--color-muted)]', 'border', 'border-[var(--color-border)]');
+        btn.classList.add('text-[var(--color-accent)]', 'border-[var(--color-accent)]');
+        btn.classList.remove('text-[var(--color-muted)]', 'border-transparent');
 
         tabContents.forEach((content) => {
           if (content.getAttribute('data-tab-content') === tabId) {

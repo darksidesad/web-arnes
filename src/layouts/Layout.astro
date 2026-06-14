@@ -26,26 +26,26 @@ import '../styles/global.css';
     />
   </head>
   <body class="bg-[var(--color-bg)] text-[var(--color-text)]">
-    <nav class="sticky top-0 z-50 bg-[var(--color-bg)]/95 backdrop-blur-sm border-b border-[var(--color-border)]">
+    <nav class="sticky top-0 z-50 bg-[var(--color-bg)]/80 backdrop-blur-xl border-b border-[var(--color-border)]">
       <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="text-xl font-bold text-[var(--color-accent)] font-['Space_Grotesk']">
+        <a href="/" class="text-xl font-bold text-[var(--color-accent)] font-['Space_Grotesk'] tracking-tight">
           Harness Engineering
         </a>
         <div class="hidden md:flex items-center gap-8">
-          <a href="#agentes" class="nav-link text-[var(--color-muted)] text-sm">Agentes</a>
-          <a href="#bootstrap" class="nav-link text-[var(--color-muted)] text-sm">Bootstrap</a>
-          <a href="#loop" class="nav-link text-[var(--color-muted)] text-sm">Loop</a>
-          <a href="#ejemplo" class="nav-link text-[var(--color-muted)] text-sm">Ejemplo</a>
-          <a href="#empezar" class="nav-link text-[var(--color-muted)] text-sm">Empezar</a>
+          <a href="#agentes" class="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] hover:underline underline-offset-4 transition-all duration-200">Agentes</a>
+          <a href="#bootstrap" class="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] hover:underline underline-offset-4 transition-all duration-200">Bootstrap</a>
+          <a href="#loop" class="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] hover:underline underline-offset-4 transition-all duration-200">Loop</a>
+          <a href="#ejemplo" class="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] hover:underline underline-offset-4 transition-all duration-200">Ejemplo</a>
+          <a href="#empezar" class="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] hover:underline underline-offset-4 transition-all duration-200">Empezar</a>
         </div>
       </div>
     </nav>
 
     <slot />
 
-    <footer class="border-t border-[var(--color-border)] py-8 mt-24">
-      <div class="max-w-6xl mx-auto px-6 text-center text-[var(--color-muted)] text-sm">
-        <p>&copy; 2024 Harness Engineering. Sistema de agentes de IA para desarrollo de software.</p>
+    <footer class="bg-[var(--color-surface)] border-t border-[var(--color-border)] py-12 mt-24">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <p class="text-[var(--color-muted)] text-sm">&copy; 2024 Harness Engineering. Sistema de agentes de IA para desarrollo de software.</p>
       </div>
     </footer>
   </body>

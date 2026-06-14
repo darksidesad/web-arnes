@@ -10,14 +10,19 @@ interface Props {
 const { name, icon, responsibility, files, noGen } = Astro.props;
 ---
 
-<div class="card">
+<div
+  class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-6 transition-all duration-300"
+  style="&:hover { box-shadow: 0 0 20px #6C63FF40; }"
+  onmouseover="this.style.boxShadow='0 0 20px #6C63FF40'; this.style.borderColor='var(--color-accent)'"
+  onmouseout="this.style.boxShadow='none'; this.style.borderColor='var(--color-border)'"
+>
   <div class="flex items-center gap-3 mb-4">
     <span class="text-2xl">{icon}</span>
     <h3 class="text-xl font-bold text-[var(--color-text)] font-['Space_Grotesk']">{name}</h3>
   </div>
   <p class="text-[var(--color-muted)] mb-4 leading-relaxed">{responsibility}</p>
   <div class="mb-4">
-    <span class="badge badge-amber">⛔ NO genera: {noGen}</span>
+    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium" style="background-color: #FF4444; color: white;">⛔ NO genera: {noGen}</span>
   </div>
   <div class="mt-4">
     <p class="text-xs font-medium text-[var(--color-muted)] uppercase tracking-wider mb-2">Archivos generados:</p>
