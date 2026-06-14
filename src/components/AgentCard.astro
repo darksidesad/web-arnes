@@ -10,26 +10,21 @@ interface Props {
 const { name, icon, responsibility, files, noGen } = Astro.props;
 ---
 
-<div
-  class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-6 transition-all duration-300 flex flex-col flex-1 h-full"
-  style="&:hover { box-shadow: 0 0 20px #6C63FF40; }"
-  onmouseover="this.style.boxShadow='0 0 20px #6C63FF40'; this.style.borderColor='var(--color-accent)'"
-  onmouseout="this.style.boxShadow='none'; this.style.borderColor='var(--color-border)'"
->
-  <div class="flex items-center gap-3 mb-4">
-    <span class="text-2xl">{icon}</span>
-    <h3 class="text-xl font-bold text-[var(--color-text)] font-['Space_Grotesk']">{name}</h3>
+<div class="card-interactive flex h-full flex-1 flex-col">
+  <div class="mb-4 flex items-center gap-3">
+    <span class="text-2xl" aria-hidden="true">{icon}</span>
+    <h3 class="font-display text-xl font-bold text-text">{name}</h3>
   </div>
-  <p class="text-[var(--color-muted)] mb-4 leading-relaxed">{responsibility}</p>
+  <p class="mb-4 leading-relaxed text-muted">{responsibility}</p>
   <div class="mb-4">
-    <span style="display: inline-flex; width: fit-content; max-width: 100%; white-space: normal; background-color: #FF4444; color: white; padding: 4px 12px; border-radius: 9999px; font-size: 11px;">⛔ NO genera: {noGen}</span>
+    <span class="badge badge-danger">⛔ NO genera: {noGen}</span>
   </div>
   <div class="mt-auto pt-4">
-    <p class="text-xs font-medium text-[var(--color-muted)] uppercase tracking-wider mb-2">Archivos generados:</p>
+    <p class="mb-2 text-xs font-medium uppercase tracking-wider text-muted">Archivos generados:</p>
     <ul class="space-y-1">
       {files.map((file) => (
-        <li class="text-sm text-[var(--color-text)] font-['JetBrains_Mono'] flex items-center gap-2">
-          <span class="text-[var(--color-accent)]">•</span>
+        <li class="flex items-center gap-2 font-mono text-sm text-text">
+          <span class="text-accent" aria-hidden="true">•</span>
           {file}
         </li>
       ))}

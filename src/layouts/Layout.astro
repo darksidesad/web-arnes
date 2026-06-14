@@ -6,6 +6,14 @@ interface Props {
 const { title = 'Harness Engineering' } = Astro.props;
 
 import '../styles/global.css';
+
+const navLinks = [
+  { href: '#agentes', label: 'Agentes' },
+  { href: '#bootstrap', label: 'Bootstrap' },
+  { href: '#loop', label: 'Loop' },
+  { href: '#ejemplo', label: 'Ejemplo' },
+  { href: '#empezar', label: 'Empezar' },
+];
 ---
 
 <!doctype html>
@@ -25,30 +33,76 @@ import '../styles/global.css';
       rel="stylesheet"
     />
   </head>
-  <body class="bg-[var(--color-bg)] text-[var(--color-text)] overflow-x-hidden">
-    <nav class="sticky top-0 z-50 bg-[var(--color-bg)]/80 backdrop-blur-xl border-b border-[var(--color-border)]">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="text-xl font-bold text-[var(--color-accent)] font-['Space_Grotesk'] tracking-tight">
+  <body class="bg-bg text-text">
+    <nav class="sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur-xl">
+      <div class="container flex items-center justify-between py-4">
+        <a href="/" class="font-display text-xl font-bold tracking-tight text-accent">
           Harness Engineering
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#agentes" class="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] hover:underline underline-offset-4 transition-all duration-200">Agentes</a>
-          <a href="#bootstrap" class="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] hover:underline underline-offset-4 transition-all duration-200">Bootstrap</a>
-          <a href="#loop" class="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] hover:underline underline-offset-4 transition-all duration-200">Loop</a>
-          <a href="#ejemplo" class="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] hover:underline underline-offset-4 transition-all duration-200">Ejemplo</a>
-          <a href="#empezar" class="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] hover:underline underline-offset-4 transition-all duration-200">Empezar</a>
+
+        <div class="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <a href={link.href} class="nav-link">{link.label}</a>
+          ))}
         </div>
+
+        <button
+          id="nav-toggle"
+          class="nav-toggle md:hidden"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-mobile-menu"
+          aria-label="Abrir menú de navegación"
+        >
+          <svg id="nav-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="nav-icon-close" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="nav-mobile-menu" class="nav-mobile-menu md:hidden">
+        {navLinks.map((link) => (
+          <a href={link.href} class="nav-mobile-link">{link.label}</a>
+        ))}
       </div>
     </nav>
 
-    <main class="flex flex-col items-center w-full">
+    <main class="flex w-full flex-col items-center">
       <slot />
     </main>
 
-    <footer class="bg-[var(--color-surface)] border-t border-[var(--color-border)] py-12 mt-24">
-      <div class="max-w-6xl mx-auto px-6 text-center">
-        <p class="text-[var(--color-muted)] text-sm">&copy; 2024 Harness Engineering. Sistema de agentes de IA para desarrollo de software.</p>
+    <footer class="mt-24 border-t border-border bg-surface py-12">
+      <div class="container text-center">
+        <p class="text-sm text-muted">
+          &copy; 2026 Harness Engineering. Sistema de agentes de IA para desarrollo de software.
+        </p>
       </div>
     </footer>
   </body>
 </html>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-mobile-menu');
+  const iconOpen = document.getElementById('nav-icon-open');
+  const iconClose = document.getElementById('nav-icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    iconOpen?.classList.toggle('hidden', isOpen);
+    iconClose?.classList.toggle('hidden', !isOpen);
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+    });
+  });
+</script>

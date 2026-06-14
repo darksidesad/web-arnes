@@ -5,6 +5,8 @@ import AgentCard from '../components/AgentCard.astro';
 import BootstrapViewer from '../components/BootstrapViewer.astro';
 import LoopDiagram from '../components/LoopDiagram.astro';
 import ConversationExample from '../components/ConversationExample.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import GradientSeparator from '../components/GradientSeparator.astro';
 
 const agents = [
   {
@@ -43,118 +45,100 @@ const agents = [
     noGen: 'código fuente de la aplicación, Dockerfiles'
   }
 ];
+
+const steps = [
+  { number: '1', title: 'Copia el Bootstrap', description: 'Copia el contenido del Bootstrap que encontraste en la sección anterior.' },
+  { number: '2', title: 'Pégalo en tu chat', description: 'Inicia una nueva conversación con tu modelo de IA y pega el Bootstrap.' },
+  { number: '3', title: 'Describe tu proyecto', description: 'El agente te hará preguntas y luego ejecutará el flujo completo.' },
+];
 ---
 
 <Layout title="Harness Engineering - Sistema de Agentes de IA">
-  <div class="flex flex-col items-center w-full">
+  <div class="flex w-full flex-col items-center">
     <Hero />
 
-  <!-- Los 5 Agentes Section -->
-    <section id="agentes" class="py-24 relative">
-      <div class="max-w-6xl mx-auto px-6 md:px-16 w-full">
-      <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/agents</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">Los 5 Agentes</h2>
-      <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">Cada agente tiene una responsabilidad específica y genera solo los archivos que le corresponden.</p>
+    <section id="agentes" class="section">
+      <div class="container md:px-16">
+        <SectionHeader
+          label="/agents"
+          title="Los 5 Agentes"
+          description="Cada agente tiene una responsabilidad específica y genera solo los archivos que le corresponden."
+        />
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-        {agents.map((agent) => (
-          <AgentCard {...agent} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  {/* Gradient Separator */}
-  <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, var(--color-accent), transparent)"></div>
-
-  {/* El Bootstrap Section */}
-  <section id="bootstrap" class="py-24 bg-[var(--color-surface)]">
-    <div class="max-w-6xl mx-auto px-6 md:px-12">
-      <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/bootstrap</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">El Bootstrap</h2>
-      <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">El prompt completo que inicia el flujo de agentes. Copia y ejecuta para cada proyecto.</p>
-
-      <BootstrapViewer />
-    </div>
-  </section>
-
-  {/* Gradient Separator */}
-  <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, var(--color-accent), transparent)"></div>
-
-  {/* Loop de Crítica Section */}
-  <section id="loop" class="py-24">
-    <div class="max-w-6xl mx-auto px-6 md:px-12">
-      <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/loop</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">Loop de Crítica</h2>
-      <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">Cuando el QA encuentra errores, se activa un ciclo de corrección automático.</p>
-
-      <LoopDiagram />
-    </div>
-  </section>
-
-  {/* Gradient Separator */}
-  <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, var(--color-accent), transparent)"></div>
-
-  {/* Ejemplo de Conversación Section */}
-  <section id="ejemplo" class="py-24 bg-[var(--color-surface)]">
-    <div class="max-w-6xl mx-auto px-6 md:px-12">
-      <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/ejemplo</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">Ejemplo de Conversación</h2>
-      <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">Así se ve un flujo completo de Harness Engineering en acción.</p>
-
-      <ConversationExample />
-    </div>
-  </section>
-
-  {/* Gradient Separator */}
-  <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, var(--color-accent), transparent)"></div>
-
-  {/* Cómo Empezar Section */}
-  <section id="empezar" class="py-24">
-    <div class="max-w-4xl mx-auto px-6 md:px-12">
-      <p class="text-[var(--color-accent)] text-sm font-medium text-center mb-3 font-['JetBrains_Mono'] uppercase tracking-widest">/start</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--color-text)] font-['Space_Grotesk']">Cómo Empezar</h2>
-      <p class="text-[var(--color-muted)] text-center max-w-2xl mx-auto mb-12">Tres pasos para usar Harness Engineering en tu próximo proyecto.</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {/* Step 1 */}
-        <div class="card text-center">
-          <div class="w-12 h-12 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mx-auto mb-4">
-            <span class="text-[var(--color-accent)] font-bold text-xl font-['Space_Grotesk']">1</span>
-          </div>
-          <h3 class="text-lg font-bold text-[var(--color-text)] mb-2 font-['Space_Grotesk']">Copia el Bootstrap</h3>
-          <p class="text-sm text-[var(--color-muted)]">Copia el contenido del Bootstrap que encontraste en la sección anterior.</p>
-        </div>
-
-        {/* Step 2 */}
-        <div class="card text-center">
-          <div class="w-12 h-12 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mx-auto mb-4">
-            <span class="text-[var(--color-accent)] font-bold text-xl font-['Space_Grotesk']">2</span>
-          </div>
-          <h3 class="text-lg font-bold text-[var(--color-text)] mb-2 font-['Space_Grotesk']">Pégalo en tu chat</h3>
-          <p class="text-sm text-[var(--color-muted)]">Inicia una nueva conversación con tu modelo de IA y pega el Bootstrap.</p>
-        </div>
-
-        {/* Step 3 */}
-        <div class="card text-center">
-          <div class="w-12 h-12 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mx-auto mb-4">
-            <span class="text-[var(--color-accent)] font-bold text-xl font-['Space_Grotesk']">3</span>
-          </div>
-          <h3 class="text-lg font-bold text-[var(--color-text)] mb-2 font-['Space_Grotesk']">Describe tu proyecto</h3>
-          <p class="text-sm text-[var(--color-muted)]">El agente te hará preguntas y luego ejecutará el flujo completo.</p>
+        <div class="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {agents.map((agent) => (
+            <AgentCard {...agent} />
+          ))}
         </div>
       </div>
+    </section>
 
-      <div class="text-center">
-        <button
-          id="copy-bootstrap"
-          class="btn-primary"
-        >
-          Copiar Bootstrap Completo
-        </button>
+    <GradientSeparator />
+
+    <section id="bootstrap" class="section section-alt">
+      <div class="container">
+        <SectionHeader
+          label="/bootstrap"
+          title="El Bootstrap"
+          description="El prompt completo que inicia el flujo de agentes. Copia y ejecuta para cada proyecto."
+        />
+        <BootstrapViewer />
       </div>
-    </div>
-  </section>
+    </section>
+
+    <GradientSeparator />
+
+    <section id="loop" class="section">
+      <div class="container">
+        <SectionHeader
+          label="/loop"
+          title="Loop de Crítica"
+          description="Cuando el QA encuentra errores, se activa un ciclo de corrección automático."
+        />
+        <LoopDiagram />
+      </div>
+    </section>
+
+    <GradientSeparator />
+
+    <section id="ejemplo" class="section section-alt">
+      <div class="container">
+        <SectionHeader
+          label="/ejemplo"
+          title="Ejemplo de Conversación"
+          description="Así se ve un flujo completo de Harness Engineering en acción."
+        />
+        <ConversationExample />
+      </div>
+    </section>
+
+    <GradientSeparator />
+
+    <section id="empezar" class="section">
+      <div class="container-narrow">
+        <SectionHeader
+          label="/start"
+          title="Cómo Empezar"
+          description="Tres pasos para usar Harness Engineering en tu próximo proyecto."
+        />
+
+        <div class="mb-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+          {steps.map((step) => (
+            <div class="card text-center">
+              <div class="step-number">{step.number}</div>
+              <h3 class="mb-2 font-display text-lg font-bold text-text">{step.title}</h3>
+              <p class="text-sm text-muted">{step.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center">
+          <button id="copy-bootstrap" class="btn-primary" type="button">
+            Copiar Bootstrap Completo
+          </button>
+        </div>
+      </div>
+    </section>
   </div>
 </Layout>
 
@@ -263,11 +247,11 @@ Máximo 3 iteraciones antes de escalar.`;
       const btn = document.getElementById('copy-bootstrap');
       if (btn) {
         const originalText = btn.textContent;
-        btn.textContent = 'Copiado!';
-        btn.classList.add('bg-[var(--color-accent-2)]');
+        btn.textContent = '¡Copiado!';
+        btn.classList.add('is-copied');
         setTimeout(() => {
           btn.textContent = originalText;
-          btn.classList.remove('bg-[var(--color-accent-2)]');
+          btn.classList.remove('is-copied');
         }, 2000);
       }
     });
