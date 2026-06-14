@@ -93,7 +93,7 @@ Máximo 3 iteraciones antes de escalar.`
 
 <div class="relative">
   <!-- Tabs -->
-  <div class="flex flex-wrap gap-0 mb-4 border-b border-[var(--color-border)]">
+  <div class="flex flex-wrap gap-2 mb-4 border-b border-[var(--color-border)]">
     {tabs.map((tab, i) => (
       <button
         class={`tab-btn px-5 py-3 text-sm font-medium transition-all font-['JetBrains_Mono'] ${
@@ -115,7 +115,7 @@ Máximo 3 iteraciones antes de escalar.`
         class={`tab-content ${i === 0 ? 'block' : 'hidden'}`}
         data-tab-content={tab}
       >
-        <div class="code-block relative">
+        <div class="code-block relative max-w-full overflow-x-auto">
           <button
             class="copy-btn absolute top-3 right-3 px-3 py-1 text-xs bg-[var(--color-surface)] text-[var(--color-muted)] rounded border border-[var(--color-border)] hover:text-[var(--color-text)] hover:border-[var(--color-accent)] transition-all"
             data-copy={sections[tab]}
