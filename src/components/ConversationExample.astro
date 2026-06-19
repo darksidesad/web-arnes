@@ -1,20 +1,34 @@
 ---
 const conversations = [
   {
-    user: 'Inicia el flujo Harness Engineering para un proyecto de API de transcripción de audio con whisper.cpp',
-    model: `PASO 0: Validación del Brief
+    user: 'Inicia Bootstrap + Loop Engineering para un proyecto de API de transcripción de audio con whisper.cpp',
+    model: `FASE 0: BRIEF Y STACK DECISION
 
-¿Qué problema resuelve este proyecto en una oración?
+1. ¿Qué problema resuelve este proyecto en una oración?
 R: Convertir audio a texto usando whisper.cpp localmente con una API REST.
 
-¿Cuáles son los 3 riesgos técnicos principales?
+2. ¿Cuáles son los 3 riesgos técnicos principales?
 R: 1. Rendimiento de whisper.cpp en CPU, 2. Manejo de archivos grandes (>1hr), 3. Concurrencia de requests.
 
-¿Qué está explícitamente fuera del scope?
+3. ¿Qué está explícitamente fuera del scope?
 R: Interfaz web, autenticación de usuarios, soporte multi-idioma inicial.
 
-¿Cuál es el criterio mínimo para considerar el proyecto 'entregable'?
-R: Endpoint POST /transcribe que acepte un archivo de audio y devuelva el texto transcripto.`
+4. ¿Cuál es el criterio mínimo para considerar el proyecto "entregable"?
+R: Endpoint POST /transcribe que acepte un archivo de audio y devuelva el texto transcripto.
+
+5. Frontend: React / Next.js / Vue / Svelte / Otro?
+R: Otro — API REST sin frontend.
+
+6. Backend: Python (FastAPI/Flask) / Node (Express/Nest) / Go / Otro?
+R: Python con FastAPI.
+
+7. Database: PostgreSQL / MySQL / MongoDB / Supabase / Redis / Ninguna?
+R: Ninguna.
+
+8. Deploy: Vercel / Railway / Docker / AWS / GCP?
+R: Docker.
+
+**Formato de confirmación:** "Confirmo" o correcciones específicas.`
   },
   {
     user: 'Confirmo',
@@ -89,7 +103,7 @@ Criterio de salida cumplido. Flujo completado exitosamente.`
 
       <div class="flex justify-start">
         <div class="chat-bubble-model">
-          <p class="chat-label">Harness Engineering v2.0</p>
+          <p class="chat-label">BOOTSTRAP + LOOP ENGINEERING</p>
           <div class="chat-content">{conv.model}</div>
         </div>
       </div>
